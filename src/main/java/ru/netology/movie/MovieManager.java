@@ -27,18 +27,15 @@ public class MovieManager {
     }
 
     public String[] findLast() {
-        int resultLength;
-        if (numberOfFilms < movies.length) {
-            resultLength = numberOfFilms;
-        } else {
-            resultLength = movies.length;
+        int resultLength = movies.length;
+        if (resultLength < numberOfFilms) {
+            numberOfFilms = resultLength;
         }
-
-        String[] result = new String[resultLength];
-        for (int i = 0; i < resultLength; i++) {
-            result[i] = movies[resultLength - 1 - i];
+        String[] result = new String[numberOfFilms];
+        for (int i = 0; i < result.length; i++) {
+            int res = resultLength - 1 - i;
+            result[i] = movies[res];
         }
-        movies = result;
-        return movies;
+        return result;
     }
 }
